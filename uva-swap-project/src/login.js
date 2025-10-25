@@ -1,13 +1,30 @@
 const loginForm = document.getElementById('login-form');
 
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault(); // prevent page reload
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  console.log('Username:', username);
-  console.log('Password:', password);
+  try {
+    const response = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-  alert(`Logging in as ${username}`);
+    const data = await response.json();
+
+    if (response.ok) {
+      localStorage.setItem("loggedInUser", username);
+      window.location.href = "profile.html"; // ✅ redirect after login
+    } else {
+      alert(data.message);
+    }
+  } catch (error) {
+    console.error("Error logging in:", error);
+    alert("Login failed. Check server.");
+  }
 });

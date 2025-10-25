@@ -1,3 +1,7 @@
+html, body {
+  font-family: 'Poppins', sans-serif;
+}
+
 /* Center the entire login container */
 #app {
   display: flex;
@@ -69,7 +73,7 @@ form button:hover {
   }
 
   #app h1 {
-    color: #213547;
+    color: #18034d;
   }
 
   input {
@@ -77,10 +81,11 @@ form button:hover {
   }
 
   form button {
-    background-color: #00796b;
+    background: #646cff;
   }
 
   form button:hover {
-    background-color: #004d40;
+    background-color: #535bf2;
+    transform: scale(1.05);
   }
 }

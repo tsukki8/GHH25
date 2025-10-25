@@ -3,34 +3,54 @@ import { clothingListings } from './clothingListings.js';
 
 const app = document.querySelector('#app');
 
-const numColumns = 7; // how many columns you want
-let columnsHTML = '';
+// Settings
+const cardWidth = 200;          // width of each card in px
+const cardGap = 10;             // gap between cards in px
+const repeatFactor = 5;         // how many times to duplicate images per column
 
-// Split items roughly equally into columns
-for (let i = 0; i < numColumns; i++) {
-  const columnItems = clothingListings
-    .filter((_, index) => index % numColumns === i) // assign items to this column
-    .map(item => `
-      <div class="card">
-        <img src="${item.image}" alt="${item.title}">
-        <h3>${item.title}</h3>
-        <p>Owner: ${item.owner}</p>
-      </div>
-    `).join('');
+// Calculate number of columns that fit the screen width
+const columnsCount = Math.ceil(window.innerWidth / (cardWidth + cardGap));
 
-  // duplicate column items for smooth scroll
-  const repeatedColumn = columnItems.repeat(4);
-
-  columnsHTML += `<div class="gallery-column">${repeatedColumn}</div>`;
+// Duplicate listings to fill column height
+function getRepeatedListings() {
+  const repeated = [];
+  for (let i = 0; i < repeatFactor; i++) {
+    repeated.push(...clothingListings);
+  }
+  return repeated;
 }
 
-app.innerHTML = `
-  <div class="gallery">
-    ${columnsHTML}
-  </div>
+const repeatedListings = getRepeatedListings();
+const columnHeight = Math.ceil(repeatedListings.length / columnsCount);
 
-  <div class="overlay">
-    <h1>SwapMates</h1>
-    <a href="login.html"><button>Login</button></a>
-  </div>
-`;
+// Build HTML for columns
+let columnsHTML = '';
+for (let c = 0; c < columnsCount; c++) {
+  const start = c * columnHeight;
+  const end = start + columnHeight;
+  const columnItems = repeatedListings.slice(start, end);
+
+  // Each column gets a small negative animation delay to stagger the scroll
+  columnsHTML += `
+    <div class="gallery-column" style="animation-delay: -${c * 3}s">
+      ${columnItems.map(item => `
+        <div class="card">
+          <picture>
+            <source srcset="${item.image}" type="image/avif">
+            <img src="${item.image}" alt="${item.title}">
+          </picture>
+          <h3>${item.title}</h3>
+          <p>Owner: ${item.owner}</p>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+app.innerHTML = columnsHTML;
+
+// Optional: update columns on window resize
+window.addEventListener('resize', () => {
+  location.reload(); // simple way to recalc columns for new screen size
+});
+

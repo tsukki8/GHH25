@@ -3,24 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clothing Exchange</title>
+    <title>Main Website</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/src/style.css" />
   </head>
 
   <body>
-    <div id="app">
-      <!-- Overlay sits above scrolling images -->
-      <div class="overlay">
-        <h1 class="title">Find Your Perfect Fit</h1>
-        <a href="/login.html">
-          <button class="login-btn">Login</button>
-        </a>
-      </div>
+    <!-- Overlay Header + Button (always visible immediately) -->
+    <div class="overlay">
+      <h1>SwapMates</h1>
+      <a href="login.html"><button>Login</button></a>
     </div>
 
+    <!-- Gallery container -->
+    <div id="app" class="gallery-container"></div>
+
+    <!-- JS -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
 
 
 

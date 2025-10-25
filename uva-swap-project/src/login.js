@@ -1,24 +1,26 @@
-import users from "/users.json";
+document.addEventListener("DOMContentLoaded", async () => {
+  const loginForm = document.getElementById("login-form");
 
-// Authentication function
-function authenticate(username, password) {
-  return users.some(
-    user => user.username === username && user.password === password
-  );
-}
+  // Load users.json dynamically
+  const res = await fetch("/src/users.json");
+  const users = await res.json();
 
-// Handle form submit instead of clicking button
-document.getElementById("login-form").addEventListener("submit", (event) => {
-  event.preventDefault(); // Stop form from refreshing page
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-  if (authenticate(username, password)) {
-    alert("✅ Login successful!");
-    // redirect or show home page UI
-    window.location.href = "/home.html";
-  } else {
-    alert("❌ Invalid username or password");
-  }
+    const foundUser = users.users.find(
+      (u) => u.username === username && u.password === password
+    );
+
+    if (foundUser) {
+      alert("✅ Login successful!");
+      localStorage.setItem("loggedInUser", username);
+      window.location.href = "profile.html";
+    } else {
+      alert("❌ Invalid username or password");
+    }
+  });
 });

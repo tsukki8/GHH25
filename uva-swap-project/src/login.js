@@ -1,30 +1,24 @@
-const loginForm = document.getElementById('login-form');
+import users from "/users.json";
 
-loginForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+// Authentication function
+function authenticate(username, password) {
+  return users.some(
+    user => user.username === username && user.password === password
+  );
+}
 
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+// Handle form submit instead of clicking button
+document.getElementById("login-form").addEventListener("submit", (event) => {
+  event.preventDefault(); // Stop form from refreshing page
 
-  try {
-    const response = await fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-    const data = await response.json();
-
-    if (response.ok) {
-      localStorage.setItem("loggedInUser", username);
-      window.location.href = "profile.html"; // ✅ redirect after login
-    } else {
-      alert(data.message);
-    }
-  } catch (error) {
-    console.error("Error logging in:", error);
-    alert("Login failed. Check server.");
+  if (authenticate(username, password)) {
+    alert("✅ Login successful!");
+    // redirect or show home page UI
+    window.location.href = "/home.html";
+  } else {
+    alert("❌ Invalid username or password");
   }
 });

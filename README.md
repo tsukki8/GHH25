@@ -6,3 +6,13 @@ Made by Maggie Zhang, Grace Chen, Ashley Huo
 ## Project Details
 
 ## How to Run 
+After cloning the repository, run the following commands on your terminal. 
+```
+npm install
+cd uva-swap-project
+```
+To run the website, run this command. 
+```
+npm run dev
+```
+Then click the link next to "Local", which should open the website on your computer. 

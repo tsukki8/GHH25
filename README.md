@@ -1,3 +1,8 @@
 # GHH25
 Project for Girls Hoo Hack 2025 at UVA
-Made by Maggie Zhang, Grace Chen, Ashely Huo
+
+Made by Maggie Zhang, Grace Chen, Ashley Huo
+
+## Project Details
+
+## How to Run 

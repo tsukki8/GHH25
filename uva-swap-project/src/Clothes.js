@@ -1,4 +1,6 @@
 class Clothes {
+    #name
+    #categoryId;
     #status;
     #size;
     #condition;
@@ -8,12 +10,32 @@ class Clothes {
     static sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'One Size'];
     static conditions = ['new', 'excellent', 'good', 'fair', 'poor'];
 
-    constructor(ownerId = null, status = true, size = null, condition = null) {
+    constructor(name = null, categoryId = null, ownerId = null, status = true, size = null, condition = null) {
+        this.#name = name;
+        this.#categoryId = categoryId;
         this.#ownerId = ownerId;
         this.#requests = new Set();
         this.setStatus(status);
         this.setSize(size);
         this.setCondition(condition);
+    }
+
+    getName() {
+        return this.#name;
+    }
+    setName(newName) {
+        if (newName !== 'string') {
+            throw new Error('Name must be a non-empty string.');
+        }
+        this.#name = newName;
+    }
+
+    getCategoryId() {
+        return this.#categoryId;
+    }
+
+    setCategoryId(newCategoryId) {
+        this.#categoryId = newCategoryId;
     }
 
     getOwnerId() {
@@ -91,6 +113,8 @@ class Clothes {
 
     toJSON() {
         return {
+            name: this.#name,
+            categoryId: this.#categoryId,
             ownerId: this.#ownerId,
             status: this.#status,
             size: this.#size,

@@ -21,7 +21,7 @@ class User{
     this.rating = rating;
 
     this.listings = [];       // items user listed for swapping
-    this.request = [];        // saved for purchase
+    this.requests = [];        // saved for purchase
     this.swaps = [];          // swap history
     this.reviews = [];        // 
     }

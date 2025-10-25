@@ -19,6 +19,13 @@ class Clothes {
     getOwnerId() {
         return this.#ownerId;
     }
+    setOwnerId(user) {
+        this.#ownerId = user.id;
+        if (!user.listings.includes(this)) {
+            user.listings.push(this);
+        }
+    
+    }
 
     getStatus() {
         return this.#status;
@@ -71,7 +78,7 @@ class Clothes {
         this.#requests.delete(userId);
     }
 
-    hasRequests() {
+    hasRequests(userId) {
         return this.#requests.has(userId);
     }
 

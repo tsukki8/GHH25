@@ -1,0 +1,38 @@
+[
+  {
+    "id": 101,
+    "title": "Sunset Dreams",
+    "ownerId": 1,
+    "category": "Paintings",
+    "image": "/assets/art/sunset.jpg",
+    "status": true,
+    "creationTime": "35 hours",
+    "dateAdded": "2025-10-20T14:00:00Z",
+    "description": "A warm acrylic landscape full of light and motion.",
+    "requests": []
+  },
+  {
+    "id": 102,
+    "title": "Stone Guardian",
+    "ownerId": 3,
+    "category": "Sculptures",
+    "image": "/assets/art/stone_guardian.jpg",
+    "status": false,
+    "creationTime": "3 weeks",
+    "dateAdded": "2025-10-14T09:30:00Z",
+    "description": "Hand-carved sandstone statue with ancient symbolism.",
+    "requests": [1]
+  },
+  {
+    "id": 103,
+    "title": "Digital Galaxy",
+    "ownerId": 2,
+    "category": "Digital Art",
+    "image": "/assets/art/digital_galaxy.png",
+    "status": true,
+    "creationTime": "12 hours",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Sci-fi cosmic piece designed in Procreate.",
+    "requests": []
+  }
+]

@@ -12,12 +12,20 @@ class ArtworkSearchEngine {
             const matchesCreationTime =
             !filters.creationTime || artwork.getCreationTime() === filters.creationTime;
 
-            let matchesStatus = true
-            if (filters.status !== undefined && filters.status !== null) {
-                matchesStatus = artwork.getStatus() === filters.status;
-            }
-            
+            const matchesStatus =
+                (filters.status === undefined || filters.status === null) ||
+                artwork.getStatus() === filters.status;
+
+            // Debug what’s happening with each item:
+            console.log({
+                artwork: artwork.title,
+                matchesCategory,
+                matchesKeyword,
+                matchesCreationTime,
+                matchesStatus
+            });
+                    
             return matchesCategory && matchesKeyword && (matchesCreationTime || matchesStatus);       
         });
-}
+    }
 }

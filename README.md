@@ -15,3 +15,6 @@ To run the website, run this command.
 npm run dev
 ```
 Then click the link next to "Local", which should open the website on your computer. 
+
+## Additional Details 
+- Please make sure that your Node.js is at least at version 22.21.0. 

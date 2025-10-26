@@ -1,4 +1,4 @@
-class ArtworkSearchEngine {
+class ArtworkFilter {
 
     filterArtworks(artworks, filters) {
         return artworks.filter(artwork => { 

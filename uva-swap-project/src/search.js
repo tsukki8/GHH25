@@ -52,7 +52,7 @@ document.getElementById("search-form").addEventListener("submit", (e) => {
 
 // Search button click event
 document.getElementById("searchButton").addEventListener("click", () => {
-    console.log("🔍 Search button clicked!");
+    console.log(" Search button clicked!");
 
     const filters = {
         keyword: searchInput.value.trim(),

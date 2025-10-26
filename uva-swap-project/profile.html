@@ -1,13 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/profileStyle.css" />
+
 </head>
+
 <body>
-    <h1>Placeholder Profile Page</h1>
-    <p>This is a basic HTML page demonstrating a heading and a paragraph.</p>
-    <p>You can add more content here, like lists, images, or links.</p>
+  <div class="search-container">
+    <header class="top-bar">
+        <h1 id="homeTitle">SwapMates</h1>
+
+        <div class="right-section">
+            <select id="statusFilter" class="dropdown">
+                <option value="">All Status</option>
+                <option value="true">Available</option>
+                <option value="false">Pending</option>
+            </select>
+
+            <select id="creationTimeFilter" class="dropdown">
+                <option value="24">Hours</option>
+                <option value="1">Days</option>
+                <option value="7">Weeks</option>
+                <option value="30">Month</option>
+                <option value="90">3+ Months</option>
+                <option value="365">Year+</option>
+            </select>
+
+            <form id="search-form">
+                <div class="search search-bar">
+                    <!-- Text input -->
+                    <input type="text" id="searchInput" class="round" placeholder="Search for items..." />
+
+                    <!-- Submit button with image -->
+                    <button type="submit" id="searchButton" class="search-button">
+                        <img src="/images/search.svg" alt="Search Icon" />
+                    </button>
+        
+                </div>
+            </form>
+
+            <div class="profile-icon">
+                <img src="/images/icon.svg" alt="Profile Icon" />
+            </div>
+        </div>
+
+    </header>
+
+    <div class="category-bar">
+      <button class="category-btn" data-category="Paintings">Paintings</button>
+      <button class="category-btn" data-category="Sculptures">Sculptures</button>
+      <button class="category-btn" data-category="Drawings">Drawings</button>
+      <button class="category-btn" data-category="Photography">Photography</button>
+      <button class="category-btn" data-category="Digital Art">Digital Art</button>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script type="module" src="/src/profile.js"></script>
 </body>
+
 </html>

@@ -96,3 +96,8 @@ document.querySelectorAll(".category-btn").forEach(btn => {
 document.querySelector(".profile-icon").addEventListener("click", () => {
   window.location.href = "profile.html";
 });
+
+//button that leads to Search 
+document.getElementById("homeTitle").addEventListener("click", () => {
+  window.location.href = "searchPage.html";
+});

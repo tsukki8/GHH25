@@ -137,6 +137,7 @@ function renderArtworks(list) {
         const div = document.createElement("div");
         div.classList.add("listing");
         div.innerHTML = `
+            <img src="${art.image || '/images/placeholder.jpg'}" alt="${art.title}">
             <h3>${art.title}</h3>
             <p>${art.description}</p>
             <p>Status: ${art.getStatus()}</p>

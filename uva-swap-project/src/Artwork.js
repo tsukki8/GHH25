@@ -7,25 +7,28 @@ class Artwork {
 
     static creationTimeOptions = ["24", "1", "7", "30", "90", "365"];
 
-    constructor(
-        ownerId = null,
-        status = true,
-        creationTime = "7",
-        dateAdded = new Date().toISOString()
-    ) {
-        this.#ownerId = ownerId;
-        this.#requests = new Set();
-
-        this.setStatus(status);
-        this.setCreationTime(creationTime);
-        this.setDateAdded(dateAdded);
-    }
-
-    constructor(ownerId = null, status = true, creationTime = "", dateAdded = new Date().toISOString()) {
+    /*constructor(ownerId = null, status = true, creationTime = "", dateAdded = new Date().toISOString()) {
         this.#ownerId = ownerId;
         this.#requests = new Set();
         this.setStatus(status);
         this.setCreatimeTime(creationTime);
+    }*/
+    constructor({ 
+        id, 
+        title, 
+        category, 
+        description, 
+        status = true, 
+        creationTime = Date.now(), 
+        user = {} 
+    }) {
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.description = description;
+        this.status = status;
+        this.creationTime = creationTime;
+        this.user = user; // user object: { name, email, etc. }
     }
 
     getOwnerId() {

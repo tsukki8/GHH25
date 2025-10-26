@@ -1,4 +1,4 @@
-class ArtworkSearchEngine {
+export default class ArtworkSearchEngine {
 
     filterArtworks(artworks, filters) {
         return artworks.filter(artwork => { 

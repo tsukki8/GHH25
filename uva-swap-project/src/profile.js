@@ -1,6 +1,3 @@
-//import the user 
-import User from "./User.js";
-
 // Make header clickable to go back to search page
 document.addEventListener("DOMContentLoaded", () => {
     const homeTitle = document.getElementById("homeTitle");

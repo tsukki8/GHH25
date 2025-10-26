@@ -1,5 +1,5 @@
 import './style.css';
-import { clothingListings } from './clothingListings.js';
+import { artListing } from './artListing.js';
 
 const app = document.querySelector('#app');
 
@@ -15,7 +15,7 @@ const columnsCount = Math.ceil(window.innerWidth / (cardWidth + cardGap));
 function getRepeatedListings() {
   const repeated = [];
   for (let i = 0; i < repeatFactor; i++) {
-    repeated.push(...clothingListings);
+    repeated.push(...artListing);
   }
   return repeated;
 }

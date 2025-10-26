@@ -65,24 +65,7 @@ class Artwork {
         if (!Artwork.creationTimeOptions.includes(newCreationTime)) {
             throw new Error(`Size must be one of the following: ${Artwork.creationTime.join(', ')}.`);
         }
-        hour = newCreationTime/24;
-        switch(hour){
-            case hour < 24:
-                this.#creationTime = "Hours";
-                break;
-            case hour >= 24 && hour < 168:
-                this.#creationTime = "Days";
-                break;
-            case hour >= 720 && hour < 2160:
-                this.#creationTime = "Month";
-                break;   
-            case hour >= 2160 && hour < 25920:
-                this.#creationTime = "3+ Months";
-                break;                   
-            case hour >= 25920:
-                this.#creationTime = "Year+";
-                break;     
-        }   
+        this.#creationTime = newCreationTime;
     }
 
     getDateAdded() {

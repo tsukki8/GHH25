@@ -66,7 +66,9 @@ class Artwork {
             throw new Error(`Size must be one of the following: ${Artwork.creationTime.join(', ')}.`);
         }
 
-        switch(newCreationTime){
+        const numTime = parseInt(newCreationTime)
+
+        switch(numTime){
             case 24:
                 this.#creationTime = "Hours";
                 break;

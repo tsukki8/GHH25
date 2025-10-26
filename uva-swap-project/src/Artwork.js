@@ -65,7 +65,27 @@ class Artwork {
         if (!Artwork.creationTimeOptions.includes(newCreationTime)) {
             throw new Error(`Size must be one of the following: ${Artwork.creationTime.join(', ')}.`);
         }
-        this.#creationTime = newCreationTime;
+
+        switch(newCreationTime){
+            case 24:
+                this.#creationTime = "Hours";
+                break;
+            case 1:
+                this.#creationTime = "Days";
+                break;
+            case 7:
+                this.#creationTime = "Weeks";
+                break;  
+            case 30:
+                this.#creationTime = "Month";
+                break;        
+            case 90:
+                this.#creationTime = "3+ Months";
+                break;                   
+            case 365:
+                this.#creationTime = "Year+";
+                break;     
+        }    
     }
 
     getDateAdded() {

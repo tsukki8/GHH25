@@ -91,3 +91,8 @@ document.querySelectorAll(".category-btn").forEach(btn => {
     renderArtworks(filtered);
   });
 });
+
+// Button that leads to Profile 
+document.querySelector(".profile-icon").addEventListener("click", () => {
+  window.location.href = "profile.html";
+});

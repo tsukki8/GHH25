@@ -1,22 +1,22 @@
-// Import data and engine
+// ✅ 1️⃣ Import data and engine
 import ArtworkSearchEngine from "./ArtworkSearchEngine.js";
 import Artwork from "./Artwork.js";
 import artworks from "./listings.json" assert { type: "json" };
 
-// Setup
+// ✅ 2️⃣ Setup
 const searchEngine = new ArtworkSearchEngine();
 
 // Convert plain JSON objects to Artwork instances
 const artworkObjects = artworks.map(a => new Artwork(a));
 
-// UI elements
+// ✅ 3️⃣ UI elements
 const searchInput = document.getElementById("searchInput");
 const statusFilter = document.getElementById("statusFilter");
 const creationTimeFilter = document.getElementById("creationTimeFilter");
 const itemsContainer = document.getElementById("itemsContainer");
 let selectedCategory = null; // Track selected category
 
-// Render Function
+// ✅ Render Function
 function renderArtworks(list) {
     itemsContainer.innerHTML = "";
 
@@ -41,39 +41,40 @@ function renderArtworks(list) {
     });
 }
 
-// Show all on page load
+// ✅ Show all on page load
 renderArtworks(artworkObjects);
 
-// Prevent the form from reloading the page on submit
+// ✅ Prevent the form from reloading the page on submit
 document.getElementById("search-form").addEventListener("submit", (e) => {
     e.preventDefault();
     document.getElementById("searchButton").click();
 });
 
-// Search button click event
+// ✅ Search button click event
 document.getElementById("searchButton").addEventListener("click", () => {
     console.log("🔍 Search button clicked!");
 
     const filters = {
         keyword: searchInput.value.trim(),
         category: selectedCategory,
-        status: statusFilter.value === "" ? null : statusFilter.value === "true",
-        creationTime: creationTimeFilter.value || null
+        status: statusFilter.value === "" ? null : statusFilter.value,
+        creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
     };
 
     console.log("Filters:", filters);
 
-    // Filter using Artwork instances (not raw JSON)
+    // ✅ Filter using Artwork instances (not raw JSON)
     const filtered = searchEngine.filterArtworks(artworkObjects, filters);
     console.log("Filtered results:", filtered);
 
     renderArtworks(filtered);
 });
 
-// Category button filtering
+// ✅ 6️⃣ Category button filtering
 document.querySelectorAll(".category-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    selectedCategory = btn.dataset.category;
+    // If "All" is clicked, clear the category filter
+    selectedCategory = btn.dataset.category === "All" ? null : btn.dataset.category;
 
     // Update active category button styling
     document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
@@ -82,12 +83,54 @@ document.querySelectorAll(".category-btn").forEach(btn => {
     const filters = {
         keyword: searchInput.value.trim(),
         category: selectedCategory,
-        status: statusFilter.value === "" ? null : statusFilter.value === "true",
-        creationTime: creationTimeFilter.value || null
+        status: statusFilter.value === "" ? null : statusFilter.value,
+        creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
     };
 
-    // ✅ Also use Artwork instances here
+    // Filter using Artwork instances
     const filtered = searchEngine.filterArtworks(artworkObjects, filters);
     renderArtworks(filtered);
   });
+});
+
+// ✅ Set "All" as the default active category and show all artworks
+const allButton = document.querySelector('.category-btn[data-category="All"]');
+allButton.classList.add('active');
+selectedCategory = null;
+renderArtworks(artworkObjects);
+
+
+// Button that leads to Profile 
+document.querySelector(".profile-icon").addEventListener("click", () => {
+  window.location.href = "profile.html";
+});
+
+
+// ✅ Trigger filtering when status dropdown changes
+statusFilter.addEventListener("change", () => {
+    const filters = {
+        keyword: searchInput.value.trim(),
+        category: selectedCategory,
+        status: statusFilter.value === "" ? null : statusFilter.value,
+        creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
+    };
+    const filtered = searchEngine.filterArtworks(artworkObjects, filters);
+    renderArtworks(filtered);
+});
+
+// ✅ Trigger filtering when creation time dropdown changes
+creationTimeFilter.addEventListener("change", () => {
+    const filters = {
+        keyword: searchInput.value.trim(),
+        category: selectedCategory,
+        status: statusFilter.value === "" ? null : statusFilter.value,
+        creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
+    };
+    const filtered = searchEngine.filterArtworks(artworkObjects, filters);
+    renderArtworks(filtered);
+});
+
+//button that leads to Search 
+document.getElementById("homeTitle").addEventListener("click", () => {
+  window.location.href = "searchPage.html";
 });

@@ -244,3 +244,49 @@ html, body {
 #homeTitle:hover {
   color: #646cff; /* or any highlight color you want */
 }
+
+/*Profile Picture Styles*/
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  margin: 2rem 0;
+}
+
+#profilePicture {
+  width: 120px;          /* diameter of profile image */
+  height: 120px;
+  border-radius: 50%;    /* make it circular */
+  object-fit: cover;     /* ensure it fills circle nicely */
+  border: 4px solid #646cff; /* optional border */
+  margin-bottom: 1rem;
+}
+
+#profileName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+#profileBio {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  max-width: 300px;
+}
+
+@media (max-width: 600px) {
+  #profilePicture {
+    width: 90px;
+    height: 90px;
+  }
+
+  #profileName {
+    font-size: 1.2rem;
+  }
+
+  #profileBio {
+    font-size: 0.9rem;
+    max-width: 250px;
+  }
+}

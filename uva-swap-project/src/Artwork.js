@@ -25,7 +25,7 @@ class Artwork {
         this.category = category;
         this.description = description;
         this.image = image;               //  store image path
-        this.#ownerId = ownerId;          // store ownerId
+        this.ownerId = ownerId;          // store ownerId
         this.setStatus(status);
         this.setCreationTime(creationTime);
         this.user = user;

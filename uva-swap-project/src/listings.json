@@ -130,5 +130,53 @@
     "dateAdded": "2025-10-25T20:15:00Z",
     "description": "Gentle blooms of roses on a warm summer day.",
     "requests": []
+  },
+  {
+    "id": 112,
+    "title": "In Hot Pursuit",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/hotPursuit.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Native American on a galloping horse on the mountainside.",
+    "requests": []
+  }, 
+  {
+    "id": 113,
+    "title": "Pandora",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/pandora.jpg",
+    "status": true,
+    "creationTime": "1",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "The woman who released all evils to plague humanity.",
+    "requests": []
+  }, 
+  {
+    "id": 114,
+    "title": "Masquerade",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/masquerade.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "An elegant ball painted in dreamy colors.",
+    "requests": []
+  }, 
+  {
+    "id": 115,
+    "title": "Self Portrait",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/umbertoPortrait.jpg",
+    "status": true,
+    "creationTime": "7",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Umberto Boccioni's self portrait in front of an orange tree.",
+    "requests": []
   }
 ]

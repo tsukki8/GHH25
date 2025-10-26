@@ -11,7 +11,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 2rem 0.8rem 1.5rem; /* top right bottom left */
+  padding: 0.5rem 2rem 0.5rem 1.5rem; /* top right bottom left */
   border-bottom: 1px solid #ccc;
   background-color: #fff;
   justify-content: flex-start; /* all items start from the left */
@@ -160,6 +160,7 @@ html, body {
 
 /* ===== CATEGORY BAR ===== */
 .category-bar {
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;

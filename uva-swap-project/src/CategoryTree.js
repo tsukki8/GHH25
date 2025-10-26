@@ -9,7 +9,7 @@ function register(category) {
 // roots - larger category
 const paintings = register(new Category(1, "Paintings"));
 const sculptures = register(new Category(2, "Sculptures"));
-const drawings = register(new Category(3, "Sculptures"));
+const drawings = register(new Category(3, "Drawings"));
 const digitalArt = register(new Category(4, "Digital Art"));
 const prints = register(new Category(5, "Prints"));
 

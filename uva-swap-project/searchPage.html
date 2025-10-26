@@ -18,12 +18,6 @@
 
     <!-- Filters -->
     <div class="filter-container">
-      <div class="dropdown">
-        <button class="dropbtn">Categories</button>
-        <div class="dropdown-content" id="categoryDropdown">
-          <!-- JS will populate checkboxes here -->
-        </div>
-      </div>
 
       <select id="statusFilter">
         <option value="">All Status</option>
@@ -32,16 +26,24 @@
       </select>
 
       <select id="creationTimeFilter">
-        <option value="1">Hours</option>
-        <option value="7">Days</option>
-        <option value="30">Weeks</option>
-        <option value="90">Month</option>
-        <option value="365">3+ Months</option>
+        <option value="24">Hours</option>
+        <option value="1">Days</option>
+        <option value="7">Weeks</option>
+        <option value="30">Month</option>
+        <option value="90">3+ Months</option>
         <option value="365">Year+</option>
       </select>
 
       <input type="text" id="searchInput" placeholder="Search for items..." />
       <button id="searchButton">Search</button>
+
+      <div class="category-bar">
+        <button class="category-btn" data-category="Paintings">Paintings</button>
+        <button class="category-btn" data-category="Sculptures">Sculptures</button>
+        <button class="category-btn" data-category="Drawings">Drawings</button>
+        <button class="category-btn" data-category="Photography">Photography</button>
+        <button class="category-btn" data-category="Digital Art">Digital Art</button>
+      </div>
     </div>
 
     <!-- Results -->

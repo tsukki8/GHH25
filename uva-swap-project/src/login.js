@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
 
     if (foundUser) {
-      alert("✅ Login successful!");
+      alert("Login successful!");
       localStorage.setItem("loggedInUser", username);
       window.location.href = "searchPage.html";
     } else {
-      alert("❌ Invalid username or password");
+      alert("Invalid username or password");
     }
   });
 });

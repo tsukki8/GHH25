@@ -24,13 +24,13 @@ class Artwork {
         this.title = title;
         this.category = category;
         this.description = description;
-        this.image = image;               // ✅ store image path
-        this.#ownerId = ownerId;          // ✅ store ownerId
+        this.image = image;               //  store image path
+        this.#ownerId = ownerId;          // store ownerId
         this.setStatus(status);
         this.setCreationTime(creationTime);
         this.user = user;
-        this.#requests = new Set(requests); // ✅ preserve requests from JSON
-        this.#dateAdded = dateAdded;        // ✅ preserve dateAdded
+        this.#requests = new Set(requests); //  preserve requests from JSON
+        this.#dateAdded = dateAdded;        // preserve dateAdded
     }
 
     getOwnerId() {
@@ -113,7 +113,7 @@ class Artwork {
             title: this.title,
             category: this.category,
             description: this.description,
-            image: this.image,              // ✅ include image in output too
+            image: this.image,              // include image in output too
             ownerId: this.#ownerId,
             status: this.#status,
             creationTime: this.#creationTime,

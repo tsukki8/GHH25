@@ -1,22 +1,22 @@
-// ✅ 1️⃣ Import data and engine
+// Import data and engine
 import ArtworkSearchEngine from "./ArtworkSearchEngine.js";
 import Artwork from "./Artwork.js";
 import artworks from "./listings.json" assert { type: "json" };
 
-// ✅ 2️⃣ Setup
+// Setup
 const searchEngine = new ArtworkSearchEngine();
 
 // Convert plain JSON objects to Artwork instances
 const artworkObjects = artworks.map(a => new Artwork(a));
 
-// ✅ 3️⃣ UI elements
+// UI elements
 const searchInput = document.getElementById("searchInput");
 const statusFilter = document.getElementById("statusFilter");
 const creationTimeFilter = document.getElementById("creationTimeFilter");
 const itemsContainer = document.getElementById("itemsContainer");
 let selectedCategory = null; // Track selected category
 
-// ✅ Render Function
+// Render Function
 function renderArtworks(list) {
     itemsContainer.innerHTML = "";
 
@@ -41,16 +41,16 @@ function renderArtworks(list) {
     });
 }
 
-// ✅ Show all on page load
+// Show all on page load
 renderArtworks(artworkObjects);
 
-// ✅ Prevent the form from reloading the page on submit
+// Prevent the form from reloading the page on submit
 document.getElementById("search-form").addEventListener("submit", (e) => {
     e.preventDefault();
     document.getElementById("searchButton").click();
 });
 
-// ✅ Search button click event
+// Search button click event
 document.getElementById("searchButton").addEventListener("click", () => {
     console.log("🔍 Search button clicked!");
 
@@ -63,14 +63,14 @@ document.getElementById("searchButton").addEventListener("click", () => {
 
     console.log("Filters:", filters);
 
-    // ✅ Filter using Artwork instances (not raw JSON)
+    // Filter using Artwork instances (not raw JSON)
     const filtered = searchEngine.filterArtworks(artworkObjects, filters);
     console.log("Filtered results:", filtered);
 
     renderArtworks(filtered);
 });
 
-// ✅ 6️⃣ Category button filtering
+// 6️⃣ Category button filtering
 document.querySelectorAll(".category-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     selectedCategory = btn.dataset.category;
@@ -86,7 +86,7 @@ document.querySelectorAll(".category-btn").forEach(btn => {
         creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
     };
 
-    // ✅ Also use Artwork instances here
+    // Also use Artwork instances here
     const filtered = searchEngine.filterArtworks(artworkObjects, filters);
     renderArtworks(filtered);
   });
@@ -98,7 +98,7 @@ document.querySelector(".profile-icon").addEventListener("click", () => {
 });
 
 
-// ✅ Trigger filtering when status dropdown changes
+// Trigger filtering when status dropdown changes
 statusFilter.addEventListener("change", () => {
     const filters = {
         keyword: searchInput.value.trim(),
@@ -110,7 +110,7 @@ statusFilter.addEventListener("change", () => {
     renderArtworks(filtered);
 });
 
-// ✅ Trigger filtering when creation time dropdown changes
+// Trigger filtering when creation time dropdown changes
 creationTimeFilter.addEventListener("change", () => {
     const filters = {
         keyword: searchInput.value.trim(),

@@ -1,3 +1,24 @@
 html, body {
   font-family: 'Poppins', sans-serif;
+
+  .category-bar {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0;
+  }
+
+  .category-btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4A4A9E;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.25s;
+  }
+
+  .category-btn:hover {
+    background-color: #6A6AD0;
+  }
 }

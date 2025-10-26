@@ -1,20 +1,31 @@
 class Artwork {
     #status;
-    //#size;
-    //#condition;
+    #dateAdded;
     #creationTime;
     #requests;
     #ownerId;
 
-    //static sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'One Size'];
-    //static conditions = ['new', 'excellent', 'good', 'fair', 'poor'];
+    static creationTimeOptions = ["24", "1", "7", "30", "90", "365"];
 
-    constructor(ownerId = null, status = true) {
+    constructor(
+        ownerId = null,
+        status = true,
+        creationTime = "7",
+        dateAdded = new Date().toISOString()
+    ) {
+        this.#ownerId = ownerId;
+        this.#requests = new Set();
+
+        this.setStatus(status);
+        this.setCreationTime(creationTime);
+        this.setDateAdded(dateAdded);
+    }
+
+    constructor(ownerId = null, status = true, creationTime = "", dateAdded = new Date().toISOString()) {
         this.#ownerId = ownerId;
         this.#requests = new Set();
         this.setStatus(status);
-        //this.setSize(size);
-        //this.setCondition(condition);
+        this.setCreatimeTime(creationTime);
     }
 
     getOwnerId() {
@@ -24,11 +35,9 @@ class Artwork {
     getStatus() {
         return this.#status;
     }
-    
     isAvailable() {
         return !!this.#status;
     }
-
     setStatus(newStatus) {
         if (typeof newStatus !== 'boolean') {
             throw new Error('Status must be a boolean value.');
@@ -50,6 +59,17 @@ class Artwork {
         this.#creationTime = newCreationTime;
     }
 
+    getDateAdded() {
+        return this.#dateAdded;
+    }
+    setDateAdded(date) {
+        const parsed = new Date(date);
+        if (isNaN(parsed.getTime())) {
+            throw new Error("Invalid date format.");
+        }
+        this.#dateAdded = parsed.toISOString();
+    }
+
     addRequest(userId) {
         this.#requests.add(userId);
     }
@@ -66,9 +86,11 @@ class Artwork {
         return {
             ownerId: this.#ownerId,
             status: this.#status,
-            //size: this.#size,
-            //condition: this.#condition,
-            requests: Array.from(this.#requests),
+            creationTime: this.#creationTime,
+            dateAdded: this.#dateAdded,
+            requests: Array.from(this.#requests)
         };
     }
 }
+
+export default Artwork;

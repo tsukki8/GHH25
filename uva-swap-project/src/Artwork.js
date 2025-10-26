@@ -26,9 +26,11 @@ class Artwork {
         this.title = title;
         this.category = category;
         this.description = description;
-        this.status = status;
-        this.creationTime = creationTime;
+        this.setStatus(status);
+        this.setCreationTime(creationTime);
         this.user = user; // user object: { name, email, etc. }
+        this.#requests = new Set();
+        this.#dateAdded = new Date().toISOString();
     }
 
     getOwnerId() {
@@ -45,7 +47,11 @@ class Artwork {
         if (typeof newStatus !== 'boolean') {
             throw new Error('Status must be a boolean value.');
         }
-        this.#status = newStatus;
+        if (newStatus === true){
+            this.#status = "Available"; 
+        } else {
+            this.#status = "Unavailable";
+        }
     }
 
     getCreationTime() {
@@ -56,7 +62,7 @@ class Artwork {
             this.#creationTime = null;
             return;
         }
-        if (!Artwork.sizes.includes(newCreationTime)) {
+        if (!Artwork.creationTimeOptions.includes(newCreationTime)) {
             throw new Error(`Size must be one of the following: ${Artwork.creationTime.join(', ')}.`);
         }
         this.#creationTime = newCreationTime;
@@ -81,7 +87,7 @@ class Artwork {
         this.#requests.delete(userId);
     }
 
-    hasRequests() {
+    hasRequests(userId) {
         return this.#requests.has(userId);
     }
 

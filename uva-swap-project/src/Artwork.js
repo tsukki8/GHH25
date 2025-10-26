@@ -42,7 +42,7 @@ class Artwork {
     }
 
     isAvailable() {
-        return !!this.#status;
+        return this.#status === "Available";
     }
 
     setStatus(newStatus) {

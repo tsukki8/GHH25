@@ -27,9 +27,7 @@ export default class ArtworkSearchEngine {
                     
             return matchesCategory && matchesKeyword && 
             (
-                (filters.creationTime && matchesCreationTime) ||
-                (filters.status && matchesStatus)||
-                (!filters.creationTime && !filters.status)
+                (!filters.creationTime || matchesCreationTime) && (!filters.status || matchesStatus)
             );       
         });
     }

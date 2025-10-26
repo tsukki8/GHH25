@@ -1,30 +1,26 @@
-const loginForm = document.getElementById('login-form');
+document.addEventListener("DOMContentLoaded", async () => {
+  const loginForm = document.getElementById("login-form");
 
-loginForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  // Load users.json dynamically
+  const res = await fetch("/src/users.json");
+  const users = await res.json();
 
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    const data = await response.json();
+    const foundUser = users.users.find(
+      (u) => u.username === username && u.password === password
+    );
 
-    if (response.ok) {
+    if (foundUser) {
+      alert("✅ Login successful!");
       localStorage.setItem("loggedInUser", username);
-      window.location.href = "profile.html"; // ✅ redirect after login
+      window.location.href = "searchPage.html";
     } else {
-      alert(data.message);
+      alert("❌ Invalid username or password");
     }
-  } catch (error) {
-    console.error("Error logging in:", error);
-    alert("Login failed. Check server.");
-  }
+  });
 });

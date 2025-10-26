@@ -7,12 +7,6 @@ class Artwork {
 
     static creationTimeOptions = ["24", "1", "7", "30", "90", "365"];
 
-    /*constructor(ownerId = null, status = true, creationTime = "", dateAdded = new Date().toISOString()) {
-        this.#ownerId = ownerId;
-        this.#requests = new Set();
-        this.setStatus(status);
-        this.setCreatimeTime(creationTime);
-    }*/
     constructor({ 
         id, 
         title, 
@@ -20,17 +14,23 @@ class Artwork {
         description, 
         status = true, 
         creationTime = Date.now(), 
+        image = null,
+        ownerId = null,
+        dateAdded = new Date().toISOString(),
+        requests = [],
         user = {} 
     }) {
         this.id = id;
         this.title = title;
         this.category = category;
         this.description = description;
+        this.image = image;               // ✅ store image path
+        this.#ownerId = ownerId;          // ✅ store ownerId
         this.setStatus(status);
         this.setCreationTime(creationTime);
-        this.user = user; // user object: { name, email, etc. }
-        this.#requests = new Set();
-        this.#dateAdded = new Date().toISOString();
+        this.user = user;
+        this.#requests = new Set(requests); // ✅ preserve requests from JSON
+        this.#dateAdded = dateAdded;        // ✅ preserve dateAdded
     }
 
     getOwnerId() {
@@ -40,59 +40,47 @@ class Artwork {
     getStatus() {
         return this.#status;
     }
+
     isAvailable() {
         return !!this.#status;
     }
+
     setStatus(newStatus) {
         if (typeof newStatus !== 'boolean') {
             throw new Error('Status must be a boolean value.');
         }
-        if (newStatus === true){
-            this.#status = "Available"; 
-        } else {
-            this.#status = "Unavailable";
-        }
+        this.#status = newStatus ? "Available" : "Unavailable";
     }
 
     getCreationTime() {
         return this.#creationTime;
     }
+
     setCreationTime(newCreationTime) {
         if (newCreationTime === null) {
             this.#creationTime = null;
             return;
         }
         if (!Artwork.creationTimeOptions.includes(newCreationTime)) {
-            throw new Error(`Size must be one of the following: ${Artwork.creationTime.join(', ')}.`);
+            throw new Error(`Creation time must be one of the following: ${Artwork.creationTimeOptions.join(', ')}.`);
         }
 
-        const numTime = parseInt(newCreationTime)
+        const numTime = parseInt(newCreationTime);
 
-        switch(numTime){
-            case 24:
-                this.#creationTime = "Hours";
-                break;
-            case 1:
-                this.#creationTime = "Days";
-                break;
-            case 7:
-                this.#creationTime = "Weeks";
-                break;  
-            case 30:
-                this.#creationTime = "Month";
-                break;        
-            case 90:
-                this.#creationTime = "3+ Months";
-                break;                   
-            case 365:
-                this.#creationTime = "Year+";
-                break;     
-        }    
+        switch (numTime) {
+            case 24: this.#creationTime = "Hours"; break;
+            case 1: this.#creationTime = "Days"; break;
+            case 7: this.#creationTime = "Weeks"; break;
+            case 30: this.#creationTime = "Month"; break;
+            case 90: this.#creationTime = "3+ Months"; break;
+            case 365: this.#creationTime = "Year+"; break;
+        }
     }
 
     getDateAdded() {
         return this.#dateAdded;
     }
+
     setDateAdded(date) {
         const parsed = new Date(date);
         if (isNaN(parsed.getTime())) {
@@ -115,6 +103,11 @@ class Artwork {
 
     toJSON() {
         return {
+            id: this.id,
+            title: this.title,
+            category: this.category,
+            description: this.description,
+            image: this.image,              // ✅ include image in output too
             ownerId: this.#ownerId,
             status: this.#status,
             creationTime: this.#creationTime,

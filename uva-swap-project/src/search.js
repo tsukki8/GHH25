@@ -73,7 +73,8 @@ document.getElementById("searchButton").addEventListener("click", () => {
 // ✅ 6️⃣ Category button filtering
 document.querySelectorAll(".category-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    selectedCategory = btn.dataset.category;
+    // If "All" is clicked, clear the category filter
+    selectedCategory = btn.dataset.category === "All" ? null : btn.dataset.category;
 
     // Update active category button styling
     document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
@@ -86,11 +87,18 @@ document.querySelectorAll(".category-btn").forEach(btn => {
         creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
     };
 
-    // ✅ Also use Artwork instances here
+    // Filter using Artwork instances
     const filtered = searchEngine.filterArtworks(artworkObjects, filters);
     renderArtworks(filtered);
   });
 });
+
+// ✅ Set "All" as the default active category and show all artworks
+const allButton = document.querySelector('.category-btn[data-category="All"]');
+allButton.classList.add('active');
+selectedCategory = null;
+renderArtworks(artworkObjects);
+
 
 // Button that leads to Profile 
 document.querySelector(".profile-icon").addEventListener("click", () => {
@@ -121,6 +129,7 @@ creationTimeFilter.addEventListener("change", () => {
     const filtered = searchEngine.filterArtworks(artworkObjects, filters);
     renderArtworks(filtered);
 });
+
 //button that leads to Search 
 document.getElementById("homeTitle").addEventListener("click", () => {
   window.location.href = "searchPage.html";

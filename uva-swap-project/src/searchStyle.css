@@ -66,7 +66,7 @@ html, body {
   border-radius: 25px;
   padding: 0.3rem 0.8rem;
   flex: 1 1 160px;      /* flexible width: grows/shrinks */
-  max-width: 220px;     /* prevents it from getting too wide */
+  max-width: 280px;     /* prevents it from getting too wide */
   background-color: #fff;
   position: relative;
 }
@@ -86,12 +86,8 @@ html, body {
   font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   background-color: transparent;
-
-  /* Move input slightly down inside the search bar */
+  padding-left: 3rem; /* ⬆️ Increased spacing */
   transform: translateY(2px);
-
-  /* Move input to the right inside the search bar */
-  padding-left: 0.5rem;  /* space between left icon and text */
 }
 
 /* Submit button using the image */

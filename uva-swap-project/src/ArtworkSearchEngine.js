@@ -25,7 +25,12 @@ export default class ArtworkSearchEngine {
                 matchesStatus
             });
                     
-            return matchesCategory && matchesKeyword && (matchesCreationTime || matchesStatus);       
+            return matchesCategory && matchesKeyword && 
+            (
+                (filters.creationTime && matchesCreationTime) ||
+                (filters.status && matchesStatus)||
+                (!filters.creationTime && !filters.status)
+            );       
         });
     }
 }

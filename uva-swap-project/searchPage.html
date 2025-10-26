@@ -13,15 +13,42 @@
 </head>
 
 <body>
-    <div class="search-container">
-        <h1>Search Listings</h1>
-        <input type="text" id="searchInput" placeholder="Search for clothing..." />
-        <button id="searchButton">Search</button>
+  <div class="search-container">
+    <h1>Search Listings</h1>
 
-        <div id="results" class="results"></div>
+    <!-- Filters -->
+    <div class="filter-container">
+      <div class="dropdown">
+        <button class="dropbtn">Categories</button>
+        <div class="dropdown-content" id="categoryDropdown">
+          <!-- JS will populate checkboxes here -->
+        </div>
+      </div>
+
+      <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="true">Available</option>
+        <option value="false">Pending</option>
+      </select>
+
+      <select id="creationTimeFilter">
+        <option value="">Any Time</option>
+        <option value="1">Within a day</option>
+        <option value="7">Within a week</option>
+        <option value="30">Within a month</option>
+        <option value="90">Within 3 months</option>
+        <option value="365">Within a year</option>
+      </select>
+
+      <input type="text" id="searchInput" placeholder="Search for items..." />
+      <button id="searchButton">Search</button>
     </div>
 
-    <!-- JS -->
-    <script type="module" src="/src/search.js"></script>
+    <!-- Results -->
+    <div id="itemsContainer"></div>
+  </div>
+
+  <!-- JS -->
+  <script type="module" src="/src/search.js"></script>
 </body>
 </html>

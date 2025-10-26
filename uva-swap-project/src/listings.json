@@ -34,5 +34,101 @@
     "dateAdded": "2025-10-25T20:15:00Z",
     "description": "Sci-fi cosmic piece designed in Procreate.",
     "requests": []
+  },
+  {
+    "id": 104,
+    "title": "Casetta Frame",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/casettaFrame.jpg",
+    "status": false,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Beautiful painting of wooden framework.",
+    "requests": []
+  },
+  {
+    "id": 105,
+    "title": "Catherine Augusta",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/catherineAugusta.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Woman staring solemnly with a red background.",
+    "requests": []
+  },
+  {
+    "id": 106,
+    "title": "Waterfront Mill",
+    "ownerId": 1,
+    "category": "Paintings",
+    "image": "/images/waterfrontMill.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Industrial mill complex in a flat angular style.",
+    "requests": []
+  },
+  {
+    "id": 107,
+    "title": "The Farm at Les Colletes",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/softTrees.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Groves of soft orange and olive trees painted in oil.",
+    "requests": []
+  },
+  {
+    "id": 108,
+    "title": "Mada Primavesi",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/madaPrima.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Bright youthful blossoms decorate a young girl's dress.",
+    "requests": []
+  },
+  {
+    "id": 109,
+    "title": "High Bridge, New York",
+    "ownerId": 2,
+    "category": "Paintings",
+    "image": "/images/highBridge.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Stone bridge at the break of dawn.",
+    "requests": []
+  },
+  {
+    "id": 110,
+    "title": "Farm in Moonlight",
+    "ownerId": 2,
+    "category": "Digital Art",
+    "image": "/images/farmMoonlight.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "An eerie moon shines over a lone farm.",
+    "requests": []
+  },
+  {
+    "id": 111,
+    "title": "Rose Hedge",
+    "ownerId": 2,
+    "category": "Photography",
+    "image": "/images/roseHedge.jpg",
+    "status": true,
+    "creationTime": "365",
+    "dateAdded": "2025-10-25T20:15:00Z",
+    "description": "Gentle blooms of roses on a warm summer day.",
+    "requests": []
   }
 ]

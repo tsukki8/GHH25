@@ -1,51 +1,65 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Page</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/src/searchStyle.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/searchStyle.css" />
 </head>
 
 <body>
   <div class="search-container">
-    <div class="search-row">
-      <h1>Search Listings</h1>
+    <header class="top-bar">
+        <h1>SwapMates</h1>
 
-    <!-- Filters -->
-    <!--<div class="filter-container">-->
+        <div class="right-section">
+            <select id="statusFilter" class="dropdown">
+                <option value="">All Status</option>
+                <option value="true">Available</option>
+                <option value="false">Pending</option>
+            </select>
 
-      <select id="statusFilter">
-        <option value="">All Status</option>
-        <option value="true">Available</option>
-        <option value="false">Pending</option>
-      </select>
+            <select id="creationTimeFilter" class="dropdown">
+                <option value="24">Hours</option>
+                <option value="1">Days</option>
+                <option value="7">Weeks</option>
+                <option value="30">Month</option>
+                <option value="90">3+ Months</option>
+                <option value="365">Year+</option>
+            </select>
 
-      <select id="creationTimeFilter">
-        <option value="24">Hours</option>
-        <option value="1">Days</option>
-        <option value="7">Weeks</option>
-        <option value="30">Month</option>
-        <option value="90">3+ Months</option>
-        <option value="365">Year+</option>
-      </select>
+            <form id="search-form">
+                <div class="search search-bar">
+                    <!-- Text input -->
+                    <input type="text" name="search" class="round" placeholder="Search for items..." />
 
-      <input type="text" id="searchInput" placeholder="Search for items..." />
-      <button id="searchButton">Search</button>
-    </div>
+                    <!-- Submit button with image -->
+                    <button type="submit" class="search-button">
+                        <img src="/images/search.svg" alt="Search Icon" />
+                    </button>
+        
+                </div>
+            </form>
+
+            <div class="profile-icon">
+                <img src="/images/icon.svg" alt="Profile Icon" />
+            </div>
+        </div>
+
+    </header>
+
 
     <div class="category-bar">
-        <button class="category-btn" data-category="Paintings">Paintings</button>
-        <button class="category-btn" data-category="Sculptures">Sculptures</button>
-        <button class="category-btn" data-category="Drawings">Drawings</button>
-        <button class="category-btn" data-category="Photography">Photography</button>
-        <button class="category-btn" data-category="Digital Art">Digital Art</button>
-    <!----  </div>-->
+      <button class="category-btn" data-category="Paintings">Paintings</button>
+      <button class="category-btn" data-category="Sculptures">Sculptures</button>
+      <button class="category-btn" data-category="Drawings">Drawings</button>
+      <button class="category-btn" data-category="Photography">Photography</button>
+      <button class="category-btn" data-category="Digital Art">Digital Art</button>
     </div>
 
     <!-- Results -->

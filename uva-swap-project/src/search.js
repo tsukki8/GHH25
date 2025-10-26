@@ -57,8 +57,8 @@ document.getElementById("searchButton").addEventListener("click", () => {
     const filters = {
         keyword: searchInput.value.trim(),
         category: selectedCategory,
-        status: statusFilter.value === "" ? null : statusFilter.value === "true",
-        creationTime: creationTimeFilter.value || null
+        status: statusFilter.value === "" ? null : statusFilter.value,
+        creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
     };
 
     console.log("Filters:", filters);
@@ -82,8 +82,8 @@ document.querySelectorAll(".category-btn").forEach(btn => {
     const filters = {
         keyword: searchInput.value.trim(),
         category: selectedCategory,
-        status: statusFilter.value === "" ? null : statusFilter.value === "true",
-        creationTime: creationTimeFilter.value || null
+        status: statusFilter.value === "" ? null : statusFilter.value,
+        creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
     };
 
     // ✅ Also use Artwork instances here
@@ -97,6 +97,30 @@ document.querySelector(".profile-icon").addEventListener("click", () => {
   window.location.href = "profile.html";
 });
 
+
+// ✅ Trigger filtering when status dropdown changes
+statusFilter.addEventListener("change", () => {
+    const filters = {
+        keyword: searchInput.value.trim(),
+        category: selectedCategory,
+        status: statusFilter.value === "" ? null : statusFilter.value,
+        creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
+    };
+    const filtered = searchEngine.filterArtworks(artworkObjects, filters);
+    renderArtworks(filtered);
+});
+
+// ✅ Trigger filtering when creation time dropdown changes
+creationTimeFilter.addEventListener("change", () => {
+    const filters = {
+        keyword: searchInput.value.trim(),
+        category: selectedCategory,
+        status: statusFilter.value === "" ? null : statusFilter.value,
+        creationTime: creationTimeFilter.value === "" ? null : creationTimeFilter.value
+    };
+    const filtered = searchEngine.filterArtworks(artworkObjects, filters);
+    renderArtworks(filtered);
+});
 //button that leads to Search 
 document.getElementById("homeTitle").addEventListener("click", () => {
   window.location.href = "searchPage.html";

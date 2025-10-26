@@ -46,10 +46,16 @@ class Artwork {
     }
 
     setStatus(newStatus) {
-        if (typeof newStatus !== 'boolean') {
-            throw new Error('Status must be a boolean value.');
+        if (typeof newStatus === 'boolean') {
+            this.#status = newStatus ? "Available" : "Unavailable";
+        } else if (typeof newStatus === 'string') {
+            const validStatuses = ["Available", "Unavailable"];
+            if (!validStatuses.includes(newStatus)) {
+                throw new Error(`Status must be one of the following: ${validStatuses.join(', ')}.`);
+            } this.#status = newStatus;
+        }else {
+            throw new Error("Status must be a boolean or a valid status string.");
         }
-        this.#status = newStatus ? "Available" : "Unavailable";
     }
 
     getCreationTime() {
